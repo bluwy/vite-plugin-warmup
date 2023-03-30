@@ -12,14 +12,22 @@ export function warmup(options) {
       if (options.clientFiles?.length) {
         mapFiles(options.clientFiles).then((clientFiles) => {
           for (const file of clientFiles) {
-            warmupFile(server, file, false)
+            warmupFile(server, file, false).catch((e) => {
+              server.config.logger.error(
+                red(`Failed to warm up ${cyan(file)}:\n`) + e.message
+              )
+            })
           }
         })
       }
       if (options.ssrFiles?.length) {
         mapFiles(options.ssrFiles).then((ssrFiles) => {
           for (const file of ssrFiles) {
-            warmupFile(server, file, true)
+            warmupFile(server, file, true).catch((e) => {
+              server.config.logger.error(
+                red(`Failed to warm up ${cyan(file)}:\n`) + e.message
+              )
+            })
           }
         })
       }
@@ -82,4 +90,12 @@ function mapFiles(files) {
     absolute: true,
     dot: true
   })
+}
+
+function red(text) {
+  return `\x1b[31m${text}\x1b[0m`
+}
+
+function cyan(text) {
+  return `\x1b[36m${text}\x1b[0m`
 }
