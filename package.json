@@ -1,0 +1,43 @@
+{
+  "name": "vite-plugin-warmup",
+  "description": "Warm up Vite's transform cache",
+  "version": "0.0.1",
+  "type": "module",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "funding": "https://bjornlu.com/sponsor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bluwy/vite-plugin-warmup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bluwy/vite-plugin-warmup/issues"
+  },
+  "keywords": [
+    "vite-plugin",
+    "warmup"
+  ],
+  "dependencies": {
+    "fast-glob": "^3.2.12"
+  },
+  "devDependencies": {
+    "vite": "^4.3.0-beta.1"
+  },
+  "peerDependencies": {
+    "vite": "^4.3.0-beta.1"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  }
+}
