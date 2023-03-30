@@ -88,6 +88,10 @@ Some metaframeworks don't load the files through Vite directly, so this plugin m
 
 `vite-plugin-warmup` also exports a `warmupFile` function you can use to warm up specific files (absolute paths only). If you need more control, you can reuse the `warmupFile` implementation in [index.js](./index.js).
 
+## Attribution
+
+- [Nuxt's warmup phase](https://github.com/nuxt/nuxt/blob/826c05415400e899779f61e2e20e757786baa200/packages/vite/src/utils/warmup.ts).
+
 ## Sponsors
 
 <p align="center">
