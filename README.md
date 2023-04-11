@@ -2,7 +2,7 @@
 
 Warm up Vite's transform cache as soon as the server initializes.
 
-Requires Vite >=4.3.
+**Requires Vite >=4.3. Does not work with `middlewareMode`.**
 
 ## Why
 

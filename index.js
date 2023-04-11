@@ -5,13 +5,20 @@ import glob from 'fast-glob'
 
 /** @type {import('./index').warmup} */
 export function warmup(options) {
+  const clientFiles = options.clientFiles?.length
+    ? mapFiles(options.clientFiles)
+    : undefined
+  const ssrFiles = options.ssrFiles?.length
+    ? mapFiles(options.ssrFiles)
+    : undefined
+
   return {
     name: 'warmup',
     apply: 'serve',
     configureServer(server) {
-      if (options.clientFiles?.length) {
-        mapFiles(options.clientFiles).then((clientFiles) => {
-          for (const file of clientFiles) {
+      server.httpServer?.on('listening', () => {
+        clientFiles?.then((files) => {
+          for (const file of files) {
             warmupFile(server, file, false).catch((e) => {
               server.config.logger.error(
                 red(`Failed to warm up ${cyan(file)}:\n`) + e.message
@@ -19,10 +26,8 @@ export function warmup(options) {
             })
           }
         })
-      }
-      if (options.ssrFiles?.length) {
-        mapFiles(options.ssrFiles).then((ssrFiles) => {
-          for (const file of ssrFiles) {
+        ssrFiles?.then((files) => {
+          for (const file of files) {
             warmupFile(server, file, true).catch((e) => {
               server.config.logger.error(
                 red(`Failed to warm up ${cyan(file)}:\n`) + e.message
@@ -30,7 +35,7 @@ export function warmup(options) {
             })
           }
         })
-      }
+      })
     }
   }
 }
