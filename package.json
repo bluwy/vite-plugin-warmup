@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-warmup",
   "description": "Warm up Vite's transform cache",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "types": "./index.d.ts",
   "exports": {
