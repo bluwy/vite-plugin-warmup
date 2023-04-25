@@ -30,14 +30,9 @@
     "fast-glob": "^3.2.12"
   },
   "devDependencies": {
-    "vite": "^4.3.0-beta.1"
+    "vite": "^4.3.0"
   },
   "peerDependencies": {
-    "vite": "^4.3.0-beta.1"
-  },
-  "peerDependenciesMeta": {
-    "vite": {
-      "optional": true
-    }
+    "vite": "^4.3.1"
   }
 }
