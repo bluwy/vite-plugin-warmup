@@ -1,8 +1,10 @@
 import type { Plugin, ViteDevServer } from 'vite'
+import type glob from 'fast-glob'
 
 export interface Options {
   clientFiles?: string[]
   ssrFiles?: string[]
+  globOptions?: glob.Options
 }
 
 export declare function warmup(options: Options): Plugin

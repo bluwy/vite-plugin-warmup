@@ -6,10 +6,10 @@ import glob from 'fast-glob'
 /** @type {import('./index').warmup} */
 export function warmup(options) {
   const clientFiles = options.clientFiles?.length
-    ? mapFiles(options.clientFiles)
+    ? mapFiles(options.clientFiles, options.globOptions)
     : undefined
   const ssrFiles = options.ssrFiles?.length
-    ? mapFiles(options.ssrFiles)
+    ? mapFiles(options.ssrFiles, options.globOptions)
     : undefined
 
   return {
@@ -87,14 +87,17 @@ function fileToUrl(file, root) {
   }
 }
 
-/**
- * @param {string[]} files
- */
-function mapFiles(files) {
-  return glob(files, {
+const DEFAULT_GLOB_OPTIONS = {
     absolute: true,
     dot: true
-  })
+}
+
+/**
+ * @param {string[]} files
+ * @param {glob.Options} options
+ */
+function mapFiles(files, options = DEFAULT_GLOB_OPTIONS) {
+  return glob(files, options)
 }
 
 function red(text) {
