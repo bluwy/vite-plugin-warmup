@@ -4,6 +4,8 @@ Warm up Vite's transform cache as soon as the server initializes.
 
 **Requires Vite >=4.3. Does not work with `middlewareMode`.**
 
+**Since Vite 5 use [server.warmup](https://vitejs.dev/guide/performance.html#warm-up-frequently-used-files) instead.**
+
 ## Why
 
 ### On-demand nature
